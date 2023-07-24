@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func fetchMovies(completion: @escaping ([Movie]?, Error?) -> Void)
     {
-        guard let url = URL(string: "https://mdev1004-m2023-assignment3b.onrender.com/api/list") else
+        guard let url = URL(string: "https://mdev1004-m2023-assignment3b-ev2r.onrender.com/api/list") else
         {
             print("URL Error")
             completion(nil, nil) // Handle URL error
