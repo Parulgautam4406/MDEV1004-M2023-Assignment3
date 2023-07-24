@@ -7,35 +7,36 @@
 
 import Foundation
 struct Movie: Codable {
-    let id: String
-    let title: String
-    let year: String
-    let rated: String
-    let released: String
-    let runtime: String
-    let genre: String
-    let director: String
-    let writer: String
-    let actors: String
-    let plot: String
-    let language: String
-    let country: String
-    let awards: String
-    let poster: String
-    let ratings: [Rating]
-    let metascore: String
+    let _id: String
+    let Title: String
+    let Year: String
+    let Rated: String
+    let Released: String
+    let Runtime: String
+    let Genre: String
+    let Director: String
+    let Writer: String
+    let Actors: String
+    let Plot: String
+    let Language: String
+    let Country: String
+    let Awards: String
+    let Poster: String
+    let Ratings: [Rating]
+    let Metascore: String
     let imdbRating: String
     let imdbVotes: String
     let imdbID: String
-    let type: String
-    let dvd: String
-    let boxOffice: String
-    let production: String
-    let website: String
-    let response: String
-    
-    struct Rating: Codable {
-        let source: String
-        let value: String
-    }
+    let DVD: String
+    let BoxOffice: String
+    let Production: String
+    let Website: String
+    let Response: String
 }
+
+struct Rating: Codable {
+    let _id: String
+    let Source: String
+    let Value: String
+}
+

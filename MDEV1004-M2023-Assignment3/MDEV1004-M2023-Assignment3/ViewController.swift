@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     var movies: [Movie] = []
@@ -76,9 +76,47 @@ class ViewController: UIViewController {
                 let movies = try JSONDecoder().decode([Movie].self, from: data)
                 completion(movies, nil) // Success
             } catch {
+                print(error)
                 completion(nil, error) // Handle JSON decoding error
             }
         }.resume()
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
+                        
+                
+        let movie = movies[indexPath.row]
+                        
+        cell.titleLabel?.text = movie.Title
+        cell.studioLabel?.text = movie.Production
+        cell.ratingLabel?.text = "\(movie.imdbRating)"
+                
+        // Set the background color of criticsRatingLabel based on the rating
+        print(movie.imdbRating)
+        if let rating = Float(movie.imdbRating){
+            
+            if rating > 7
+            {
+                cell.ratingLabel.backgroundColor = UIColor.green
+                cell.ratingLabel.textColor = UIColor.black
+            } else if rating > 5 {
+                cell.ratingLabel.backgroundColor = UIColor.yellow
+                cell.ratingLabel.textColor = UIColor.black
+            } else {
+                cell.ratingLabel.backgroundColor = UIColor.red
+                cell.ratingLabel.textColor = UIColor.white
+            }
+        }
+        return cell
     }
 
 }
